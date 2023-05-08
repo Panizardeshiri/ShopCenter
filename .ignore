@@ -83,4 +83,5 @@ __pycache__/
 local_settings.py
 
 .env
+DressShop/.env
 db.sqlite3
