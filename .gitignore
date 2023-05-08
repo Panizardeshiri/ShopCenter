@@ -88,4 +88,4 @@ env/
 env.
 .env
 .Env
-db.sqlite3
+# db.sqlite3
