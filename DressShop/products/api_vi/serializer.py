@@ -9,3 +9,4 @@ class ProductListSerializer(serializers.ModelSerializer):
         model = Product
         fields= '__all__'
         extra_fields = ['get_total_price']
+        
