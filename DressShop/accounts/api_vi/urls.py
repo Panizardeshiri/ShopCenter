@@ -17,7 +17,6 @@ urlpatterns = [
     path('resend-code/', ResendCodeView.as_view(),name='resend-code'),
     path('forget-pass/',ForgetPassView.as_view(),name='forget-pass'),
     path('change-pass/',ChangePassView.as_view(),name='change-pass'),
-    # path('Products-list/',ProductListView.as_view(),name='Products-list')
     # path('n/',NewRView.as_view(),)
     # path('validation-sms/<code:int>/')
 

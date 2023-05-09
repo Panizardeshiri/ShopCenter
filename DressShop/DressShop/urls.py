@@ -23,6 +23,7 @@ urlpatterns = [
     path('accounts/',include('accounts.urls' , namespace='accounts')),
     path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+    path('products/',include('products.urls' , namespace='products')),
 ]
 
 

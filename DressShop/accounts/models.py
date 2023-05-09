@@ -74,7 +74,4 @@ def save_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
 
-class Product(models.Model):
-    product_name = models.CharField(max_length=255)
-    image = models.ImageField()
-    price = models.IntegerField()
+
