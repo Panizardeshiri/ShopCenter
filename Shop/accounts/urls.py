@@ -6,6 +6,6 @@ app_name = 'accounts'
 
 urlpatterns = [
     
-    path('api-vi/',include('accounts.api_vi.urls'),name = 'api-vi'),
+    path('api-vi/',include('accounts.api_vi.urls'),name = 'api-user'),
     
 ]

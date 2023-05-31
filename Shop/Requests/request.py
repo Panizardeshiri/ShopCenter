@@ -5,12 +5,9 @@ def products_list():
     return response.json()
 
 
-def cart(token):
-    response = requests.get('http://127.0.0.1:8000/account/login', headers={
-        'Content-Type': 'application/json',
-        'Authorization':f'Token {token}'})
-    print(response)
-    
+
+
+  
 
 
 def register_user(phone,password,password2):
@@ -74,8 +71,35 @@ def refresh_login(refresh):
 # t_view('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg2NTEzMzk0LCJpYXQiOjE2ODUzMDM3OTQsImp0aSI6IjY5MTgwNGZkNWY5NjQyZTlhMjZkNjNjM2U2OGM3ZDdkIiwidXNlcl9pZCI6NH0.tRouSsvjSowxIvyK8OyBVathdJm-gMAHh3dltjOc8XM')
 
 # refresh_login(refresh)
-refresh,access, = login('+989017963535','pan12345')
-print(access)
-print('---------------------------------------')
-print(refresh)
+# refresh,access, = login('+989017963535','pan12345')
+# print(access)
+# print('---------------------------------------')
+# print(refresh)
 # t_view('')
+def cart(token):
+    response = requests.get('http://127.0.0.1:8000/products/api-vi/cartitem', headers={
+        "Authorization": f"Bearer {token}"
+    })
+        
+    print(response.json())
+
+def addcart(cart,owner,item,quantity,token):
+    response = requests.post('http://127.0.0.1:8000/products/api-vi/cartitem', {'cart':cart,'owner':owner,'item':item,'quantity':quantity},headers={
+        "Authorization": f"Bearer {token}"
+    }
+    )
+        
+    print(response.json())
+
+# addcart('8','3','2','2','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg2NzUxNjQzLCJpYXQiOjE2ODU1NDIwNDMsImp0aSI6IjEyMDIzYzljNmZkMTQ5NzI5ZjdjMzM4MTEyMjk4MzVkIiwidXNlcl9pZCI6M30.34k6O_8ssn7_1SSDSgLzO-Msl5XUlBStM5ncLJS393g')
+
+# register_user('+989017963535','pan12345','pan12345')
+
+    
+
+# refresh,access, = login('+989017963535','pan12345')
+# print(access)
+# print('---------------------------------------')
+# print(refresh)
+
+cart('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg2NzUxNjQzLCJpYXQiOjE2ODU1NDIwNDMsImp0aSI6IjEyMDIzYzljNmZkMTQ5NzI5ZjdjMzM4MTEyMjk4MzVkIiwidXNlcl9pZCI6M30.34k6O_8ssn7_1SSDSgLzO-Msl5XUlBStM5ncLJS393g')
