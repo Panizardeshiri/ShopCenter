@@ -1,0 +1,24 @@
+<div>
+<form [formGroup]="SignupForm" (ngSubmit)="onSubmit(SignupForm)">
+    <div>
+      <label>
+        Phone:
+        <input formControlName="phone" placeholder="Your phone">
+      </label>
+      <div *ngIf="SignupForm.get('phone')?.invalid && (SignupForm.get('phone')?.dirty || SignupForm.get('phone')?.touched)">
+        Please Enter your number.
+      </div>
+    </div>
+    <div>
+      <label>
+        Password:
+        <input formControlName="password" placeholder="Your password">
+      </label>
+      <div *ngIf="SignupForm.get('password')?.invalid && (SignupForm.get('password')?.dirty || SignupForm.get('password')?.touched)">
+        Please Enter A valid Password.
+      </div>
+    </div>
+  
+    <button type="submit">Sign Up</button>
+  </form>
+</div>
