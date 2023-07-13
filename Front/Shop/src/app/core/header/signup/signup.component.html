@@ -1,5 +1,5 @@
 <div>
-<form [formGroup]="SignupForm" (ngSubmit)="onSubmit(SignupForm)">
+<form [formGroup]="SignupForm" (ngSubmit)="onSignin(SignupForm)">
     <div>
       <label>
         Phone:
@@ -11,6 +11,7 @@
     </div>
     <div>
       <label>
+        
         Password:
         <input formControlName="password" placeholder="Your password">
       </label>
@@ -18,6 +19,17 @@
         Please Enter A valid Password.
       </div>
     </div>
+    <div>
+      <label>
+        Confirm Password:
+        <input formControlName="password2" placeholder="Reapet Your password">
+      </label>
+    </div>
+      <div class="error" *ngIf="SignupForm.get('password2')?.touched 
+      && SignupForm.get('password')?.touched 
+      && SignupForm.get('password') !== SignupForm.get('password2')" >
+      <small> Password does not match </small>
+      </div>
   
     <button type="submit">Sign Up</button>
   </form>
