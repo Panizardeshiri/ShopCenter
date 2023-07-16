@@ -7,7 +7,7 @@ import { SignUpModel } from 'src/app/models/auth.model';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
   
@@ -18,16 +18,19 @@ export class SignupComponent implements OnInit {
              )
     {}
   
-  SignupForm: FormGroup;
+    signUpForm: FormGroup;
   signupSuccess: string = ''
   snippingLoading: boolean = false
   signupError: string = ''
+  loginError:string
+  formStatus: string = 'signUp'
+  showPasswordStatus: boolean = false;
 
 
   
 
   ngOnInit(): void {
-    this.SignupForm = this.fb.group({
+    this.signUpForm = this.fb.group({
       phone: ['',[Validators.required,Validators.pattern("^([0]{1}[0-9]{3}[0-9]{3}[0-9]{4})|([\+]{1}[0-9]{1,3}[0-9]{3}[0-9]{4,6})")]],
       password: ['',[Validators.required, Validators.minLength(8), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z0-9d$@$!%*?&].{8,150}')]],
       password2: ['',[Validators.required, Validators.minLength(8), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z0-9d$@$!%*?&].{8,150}')]],
@@ -42,17 +45,29 @@ export class SignupComponent implements OnInit {
     
     this.authService.signUpService(phone, password, password2)
     .subscribe((data : SignUpModel) => {
+      console.log(data)
       this.snippingLoading = false
       this.signupSuccess = data['message']
       
       this.router.navigate(['/'])
-    }, errorMessage => {
+    }, err => {
       this.snippingLoading = false
-      this.signupError = errorMessage
+      console.log('*******************', err)
+      this.signupError = err
     }); 
     form.reset()   
     
    
   }
+  OnPasswordToggle(){
+    this.showPasswordStatus = !this.showPasswordStatus;
+   }
+   changeFormToSignIn(){
+    this.formStatus = 'signIn'
+   }
+
+   changeFormToSignUp(){
+    this.formStatus = 'signUp'
+   }
 
 }

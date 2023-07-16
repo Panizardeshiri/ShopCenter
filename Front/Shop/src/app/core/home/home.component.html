@@ -1,4 +1,10 @@
-<input type="text" (input)="onAddProduct($event)">
-<hr>
-<p>{{product}}</p>
-<button class="btn btn-success">Add Product</button>
+<!-- <div *ngFor="let p of data ">
+    <h3> {{p.name}}</h3>
+
+</div> -->
+
+<div *ngFor="let product of data">
+
+    <h1>{{product.name}}</h1>
+
+</div>

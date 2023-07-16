@@ -6,6 +6,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SignupComponent } from './header/signup/signup.component';
 import {MatDialogModule} from '@angular/material/dialog'; 
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatIconModule} from '@angular/material/icon'
 
 
 
@@ -20,6 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     MatDialogModule,
     ReactiveFormsModule,
+    MatIconModule,
   ],
   exports: [
     HeaderComponent,

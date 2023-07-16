@@ -89,7 +89,6 @@ export class AuthService {
           localStorage.setItem('refresh_token', data['refresh_token'])
           localStorage.setItem('access_token', data['access_token'])
           localStorage.setItem('user_phone', phone)
-          console.log(data)
           this.userIsLoggedIn.next(true)
           this.signUpMessage.next(data['message'])
           }
