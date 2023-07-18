@@ -12,14 +12,10 @@ export class ProductService {
 
   constructor(private http:HttpClient) { }
 
-  productlistService():Observable<any> {
+  productlistService() {
     return this.http.get(this.apiUrl+'products/api-vi/products-list').pipe(
-      catchError(this.handleError),
-      tap( (data:any)=> {
-        console.log(data)
-        this.productslist.next(data)
-        }
-      )
+      catchError(this.handleError)
+      
     
     )
   }

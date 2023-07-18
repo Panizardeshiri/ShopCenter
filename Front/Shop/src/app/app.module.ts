@@ -11,7 +11,8 @@ import { RouterModule, Routes } from '@angular/router';
 import {HomeComponent} from 'src/app/core/home/home.component'
 
 const routes : Routes = [
-  {path: 'home',component: HomeComponent}
+  {path: 'home',component: HomeComponent},
+  {path:'product-detail/:id',component: HomeComponent}
 ]
 
 
@@ -31,7 +32,7 @@ const routes : Routes = [
     BrowserAnimationsModule,
     HttpClientModule,
     CommonModule,
-    // RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes)
   ],
   providers: [ ],
   bootstrap: [AppComponent]
