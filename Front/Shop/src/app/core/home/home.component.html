@@ -1,6 +1,6 @@
-
+<app-header></app-header>
 <div class="row"><div *ngFor="let product of Products" class="card" style="width: 18rem;">
-    <img src="{{product.image}}" class="card-img-top" alt="">
+  <a  routerLink="product-detail/{{product.name}}" (click)="getProducId(product.id)"><img src="{{product.image}}" class="card-img-top" alt=""></a>  
     <div class="card-body">
       <h5 class="card-title">{{product.name}}</h5>
       <h5>{{product.price|currency}}</h5>

@@ -9,10 +9,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import {HomeComponent} from 'src/app/core/home/home.component'
+import { SearchComponent } from './core/header/search/search.component';
+import {ProductdetailComponent} from '../app/core/home/productdetail/productdetail.component';
+// import { FilterproductsPipe } from './core/header/search/filterproducts.pipe';
+// import { Ng2SearchPipeModule } from 'ng2-search-filter'
+
 
 const routes : Routes = [
-  {path: 'home',component: HomeComponent},
-  {path:'product-detail/:id',component: HomeComponent}
+  {path: '',component: HomeComponent},
+  {path:'product-detail/:name',component: ProductdetailComponent},
+  {path:'search/:query',component:SearchComponent}
+  // {path:'search/:query',component:SearchComponent}
 ]
 
 
@@ -23,6 +30,9 @@ const routes : Routes = [
   declarations: [
     AppComponent,
     
+    
+   
+    
   ],
   imports: [
     BrowserModule,
@@ -32,7 +42,8 @@ const routes : Routes = [
     BrowserAnimationsModule,
     HttpClientModule,
     CommonModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    
   ],
   providers: [ ],
   bootstrap: [AppComponent]

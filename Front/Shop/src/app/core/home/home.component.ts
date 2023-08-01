@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductService} from 'src/app/services/product.service'
 import {HttpClient, HttpErrorResponse} from "@angular/common/http"
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -28,6 +29,10 @@ export class HomeComponent implements OnInit {
 
    
   
+  }
+
+  getProducId(id:any){
+    this.productService.sendIdToDetail.next(id)
   }
  
   // filteredImages(value:any) {

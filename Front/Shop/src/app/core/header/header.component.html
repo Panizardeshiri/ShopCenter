@@ -12,11 +12,19 @@
             <a class="nav-link active" href="#">LogOut</a>
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <div class="d-flex" role="search">
+          <input  class="form-control me-2" type="search" placeholder="Search" aria-label="Search"  [(ngModel)]="searchText" >
+        
           <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        </div>     
       </div>
     </div>
   </nav>
+
+  <div class="card" style="width: 14rem;">
+    <ul class="list-group list-group-flush" *ngFor = "let item of (result | filterproducts:searchText)">
+      <li class="list-group-item">{{item.name}}</li>
+      
+    </ul>
+  </div>
   

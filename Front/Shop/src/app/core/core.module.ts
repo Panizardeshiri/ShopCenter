@@ -7,7 +7,11 @@ import { SignupComponent } from './header/signup/signup.component';
 import {MatDialogModule} from '@angular/material/dialog'; 
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
-import { SearchComponent } from './header/search/search.component'
+import { SearchComponent } from './header/search/search.component';
+import { ProductdetailComponent } from './home/productdetail/productdetail.component'
+import { RouterModule, Routes } from '@angular/router';
+import { FilterproductsPipe } from '../core/header/search/filterproducts.pipe';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -17,13 +21,17 @@ import { SearchComponent } from './header/search/search.component'
     HomeComponent,
     FooterComponent,
     SignupComponent,
-    SearchComponent
+    SearchComponent,
+    ProductdetailComponent,
+    FilterproductsPipe
   ],
   imports: [
     CommonModule,
     MatDialogModule,
     ReactiveFormsModule,
     MatIconModule,
+    RouterModule,
+    FormsModule      
   ],
   exports: [
     HeaderComponent,
