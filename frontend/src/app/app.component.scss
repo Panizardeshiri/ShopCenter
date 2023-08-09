@@ -1,0 +1,21 @@
+@import "./styles/theme.scss";
+
+
+::ng-deep nb-layout-column{
+    padding: 0 !important;
+}
+
+::ng-deep nb-layout-header{
+    nav{
+        padding: 0!important; 
+    }
+}
+app-header{
+    width: 100%;
+    
+}
+
+::ng-deep app-auth-user{
+    display: inline-block;
+    width: 100%;
+}

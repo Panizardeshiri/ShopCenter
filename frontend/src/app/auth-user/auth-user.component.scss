@@ -1,0 +1,149 @@
+@import "../styles/theme.scss";
+
+.title{
+    text-align: center;
+    h2{
+        margin: 0;
+    }
+    
+}
+
+.col-xs-12{
+    width: 100%;
+}
+
+form{
+    position: relative;
+    margin-top: 2.5rem;
+    span{
+        cursor: pointer;
+    }
+
+    .bold{
+        font-weight: bold;
+        text-decoration: underline;
+        
+    }
+
+    .form-control:focus{
+        box-shadow: none;
+    }
+
+    .hide{
+        display: none;
+    }
+
+    .invalid{
+        border-color: $input_wrong_border_color;
+    }
+    .valid, .valid:focus{
+        border-color: $input_success_border_color;
+    }
+    label{
+        margin-bottom: 0.3rem;
+        font-weight: 500;
+        font-style: italic;
+    }
+    button{
+        position: relative;
+        background: $button_submit_color;
+        margin-top: 2.5rem;
+        width: 100%;
+        border: none;
+        mat-icon{
+            position:absolute
+        }
+    }
+    .sign-in_instead{
+        margin-top: 2.5rem;
+        text-align: center;
+        font-style: italic;
+    }
+    a, a:hover{
+        cursor: pointer;
+        text-decoration: underline ;
+        font-style: italic;
+    }
+    input{
+        font-weight: 501;
+        font-style: italic;
+    }
+}
+
+.error{
+    background:$input_wrong_border_color ;
+    margin: 3px 0;
+    border-radius: 4px;
+    color: $font_color_light;
+
+    small{
+        padding: 13px;
+        
+    };
+}
+
+.success{
+    background:$input_success_border_color ;
+    margin: 3px 0;
+    border-radius: 4px;
+    color: $font_color_light;
+
+    small, p{
+        padding: 13px;
+        
+    };
+}
+
+
+::ng-deep .input-element{
+    margin-top: 0.75rem;
+    .pass-input{
+        span{
+            height: 40px;
+            justify-content: center;
+        }
+        position: relative;
+        .pass-visible{
+            height: 40px;
+            
+
+            button{
+                padding: 0;
+                height: 40px;
+                position: absolute;
+                top: 3px;
+                right: 0;
+                font-style: italic;
+                
+            }
+
+        }
+
+        input{
+            font-weight: 501;
+            font-style: italic;
+        }
+
+    }
+}
+
+::ng-deep .spinner_loading{
+    nb-card{
+        margin: 0;
+        display: flex;
+        position: relative;
+
+        nb-spinner{
+            background-color: initial !important;
+            span{
+                position: absolute;
+                right: 32px;
+                border-right-color: #588157 !important;
+                border-bottom-color:   #588157 !important ;    
+                border-left-color:  #588157   !important;
+                border-top-color:#fff !important;
+            }
+        }
+
+    }
+}

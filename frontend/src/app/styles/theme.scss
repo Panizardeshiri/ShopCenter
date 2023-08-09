@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'GreatVibes';
+    src: url('../../assets/fonts/GreatVibes-Regular.ttf');
+  }
+
+@font-face {
+  font-family: 'Zar';
+  src: url('../../assets/fonts/Far.Zar.ttf');
+}
+
+
+
+$brand_font_family: 'Zar';
+$brand_font_size: 25px;
+$side_bar_expanded_width:256px;
+$header_navbar_height : 3rem;
+$header_font_color: #ffff;
+
+$header_dialog_font_style: 'Zar';
+
+$header_navbar_background : #748DA6;
+$header_navbar_color: #536066c7;
+
+$side-bar_background_color: #9CB4CC;
+
+$button_submit_color: #8ecae6;
+
+$input_success_border_color: #588157;
+$input_wrong_border_color: #e76f51;
+$input_border_color: #ced4da;
+
+$font_color_light : #ffff;
+
+$warning_background : #e76f51;
+$success_background : #588157;
+
+$box_border_color : #ced4da;
+$box_border_radius:4px;
+// $box_border_shadow:
+$box_color_background: #fff;
+
+
+
+// D3CEDF, F2D7D9
