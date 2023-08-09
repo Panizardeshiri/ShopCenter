@@ -25,6 +25,7 @@ export class SignupComponent implements OnInit {
   loginError:string
   formStatus: string = 'signUp'
   showPasswordStatus: boolean = false;
+  showsms:boolean=false
 
 
   
@@ -59,6 +60,11 @@ export class SignupComponent implements OnInit {
     
    
   }
+  showsmsform(){
+    this.showsms =true
+  }
+
+
   OnPasswordToggle(){
     this.showPasswordStatus = !this.showPasswordStatus;
    }

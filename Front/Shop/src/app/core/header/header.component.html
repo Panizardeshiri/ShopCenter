@@ -14,17 +14,24 @@
         </ul>
         <div class="d-flex" role="search">
           <input  class="form-control me-2" type="search" placeholder="Search" aria-label="Search"  [(ngModel)]="searchText" >
+          <div class="card" style="width: 14rem;">
+            <ul class="list-group list-group-flush" *ngFor = "let product of (result | filterproducts:searchText)">
+              <li  routerLink="product-detail/{{product.name}}" (click)="getProducId(product.id)" class="list-group-item">{{product.name}}</li>
+              
+            </ul>
+          </div>
         
           <button class="btn btn-outline-success" type="submit">Search</button>
+
         </div>     
       </div>
     </div>
   </nav>
 
-  <div class="card" style="width: 14rem;">
-    <ul class="list-group list-group-flush" *ngFor = "let item of (result | filterproducts:searchText)">
-      <li class="list-group-item">{{item.name}}</li>
+  <!-- <div class="card" style="width: 14rem;">
+    <ul class="list-group list-group-flush" *ngFor = "let product of (result | filterproducts:searchText)">
+      <li  routerLink="product-detail/{{product.name}}" (click)="getProducId(product.id)" class="list-group-item">{{product.name}}</li>
       
     </ul>
-  </div>
+  </div> -->
   

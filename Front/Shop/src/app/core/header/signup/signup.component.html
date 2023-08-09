@@ -125,7 +125,18 @@
     </div> 
       
       <!-- <button type="submit" class="btn" [disabled]="!signUpForm.valid || password.value !== password2.value ">Submit<mat-icon>arrow_forward</mat-icon></button> -->
-      <button type="submit" class="btn" >Submit<mat-icon>arrow_forward</mat-icon></button>
+      <button type="submit" class="btn" (click)="showsmsform()" >Submit<mat-icon>arrow_forward</mat-icon></button>
+      <ng-container>
+        <div class="title"  >
+          <h1  *ngIf = 'showsms'>Please Enter your code here</h1>
+        </div>
+        <form action="">
+
+        </form>
+
+      </ng-container>
+      
+
 
       <div class="sign-in_instead" *ngIf="formStatus=='signUp';else changeForm" >
         <h6>Already have an account? <a (click)="changeFormToSignIn()" >Sign-in</a> instead</h6>
