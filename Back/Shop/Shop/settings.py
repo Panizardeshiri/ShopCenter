@@ -38,7 +38,7 @@ SECRET_KEY =env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 SMS_BACKEND = 'sms.backends.console.SmsBackend'
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS=['127.0.0.1', '0.0.0.0']
 AUTH_USER_MODEL = 'accounts.User'
 
 # Application definition
@@ -183,7 +183,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE =  'Asia/tehran'
+TIME_ZONE =  'Asia/Tehran'
 
 USE_I18N = True
 

@@ -13,7 +13,7 @@ export class AuthUserComponent implements OnInit {
   @Input() formStatus: string = '';
   signUpForm: FormGroup;
   loginForm : FormGroup;
-  usernameValidator:any = Validators.pattern("^([0]{1}[0-9]{3}[0-9]{3}[0-9]{4})|([\+]{1}[0-9]{1,3}[0-9]{3}[0-9]{4,6})");
+  usernameValidator:any = Validators.pattern("^([0]{1}[0-9]{3}[0-9]{3}[0-9]{4})$|^([\+]{1}[0-9]{1,3}[0-9]{3}[0-9]{4,6})$");
 
   snippingLoading: boolean = false;
 
@@ -21,13 +21,12 @@ export class AuthUserComponent implements OnInit {
 
 
     this.signUpForm = this.fb.group({
-      phone: ['', [
+      username: ['', [
         Validators.required,
         this.usernameValidator,
-        Validators.email, 
       ]],
-      password: ['', [Validators.required, Validators.minLength(8), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z0-9d$@$!%*?&].{8,150}') ]],
-      password1: ['', [Validators.required, Validators.minLength(8), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z0-9d$@$!%*?&].{8,150}')]],
+      password:   ['', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$') ]],
+      password1:  ['', [Validators.required, Validators.minLength(8)]],
     });
 
     this.loginForm = this.fb.group({
@@ -47,6 +46,7 @@ export class AuthUserComponent implements OnInit {
     const username = form.value.username
     const password = form.value.password
     const password1 = form.value.password1
+
   }
 
 
@@ -63,6 +63,4 @@ export class AuthUserComponent implements OnInit {
    changeFormToSignUp(){
     this.formStatus = 'signUp'
    }
-
-
 }

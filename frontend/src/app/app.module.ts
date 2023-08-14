@@ -10,7 +10,7 @@ import { NbThemeModule , NbSidebarModule, NbLayoutModule, NbButtonModule } from 
 import { SideBarModule } from './side-bar/side-bar.module'
 import {MatIconModule} from '@angular/material/icon';
 import { AuthUserModule } from './auth-user/auth-user.module'
-
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent
@@ -18,6 +18,7 @@ import { AuthUserModule } from './auth-user/auth-user.module'
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     // import nebular module to here
     [    NbThemeModule.forRoot(),
     NbLayoutModule,
