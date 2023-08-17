@@ -6,19 +6,19 @@
   
           </ul> -->
         
-            <ul class="navbar-nav me-auto me-3" >
+            <ul class="navbar-nav me-auto me-3" *ngIf="!userPhoneNumber" >
 
                 <li><a class="me-2 ms-2 item dialog" (click)="onSignUp()"  > ثبت نام</a></li>
                 <li><a class="me-2 item dialog"  (click)="onSignIn()" > ورود</a></li>
             </ul>
   
-            <ul class="navbar-nav me-auto me-3" >
-                <div class="dropdown me-auto">
-                <a href="#" class="dropdown-toggle item" data-bs-toggle="dropdown">email</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item">Sign Out</a>
-                    <a href="#" class="dropdown-item">Profile</a>
-                </div>
+            <ul class="navbar-nav me-auto me-3" *ngIf="userPhoneNumber" >
+                <div class="dropdown me-auto ms-3 dialog">
+                    <a href="#" class="dropdown-toggle item" data-bs-toggle="dropdown">{{userPhoneNumber}}</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" (click)="onLogOut()">Sign Out</a>
+                        <a href="#" class="dropdown-item">Profile</a>
+                    </div>
                 </div>
             </ul>   
     

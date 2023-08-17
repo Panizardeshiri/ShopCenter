@@ -4,7 +4,7 @@ import { AuthUserComponent } from './auth-user.component';
 import { FormsModule, ReactiveFormsModule, } from '@angular/forms';
 import { NbCardModule, NbSpinnerModule } from '@nebular/theme';
 import {MatIconModule} from '@angular/material/icon';
-// import { NbDialogModule } from '@nebular/theme';
+
 
 
 @NgModule({

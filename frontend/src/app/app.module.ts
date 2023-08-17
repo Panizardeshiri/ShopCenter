@@ -11,6 +11,10 @@ import { SideBarModule } from './side-bar/side-bar.module'
 import {MatIconModule} from '@angular/material/icon';
 import { AuthUserModule } from './auth-user/auth-user.module'
 import { FormsModule } from '@angular/forms';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
+
+
 @NgModule({
   declarations: [
     AppComponent
@@ -24,6 +28,7 @@ import { FormsModule } from '@angular/forms';
     NbLayoutModule,
     NbSidebarModule.forRoot(),
     NbButtonModule,
+    HttpClientModule,
   ],
 
   // import material module here
@@ -38,7 +43,11 @@ import { FormsModule } from '@angular/forms';
     SideBarModule,
     AuthUserModule,
   ],
-  providers: [],
+  providers: [   {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptorService,
+    multi: true
+   }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

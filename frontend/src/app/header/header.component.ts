@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnChanges ,OnDestroy, SimpleChanges } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
 import { AuthUserComponent } from '../auth-user/auth-user.component';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,8 +9,10 @@ import { AuthUserComponent } from '../auth-user/auth-user.component';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  userPhoneNumber :any;
 
-  constructor(private dialogService: NbDialogService,) { }
+  constructor(private dialogService: NbDialogService,
+          private authService: AuthService) { }
 
   onSignUp() {
     const dialogRef = this.dialogService.open(AuthUserComponent, {    context: {
@@ -26,7 +29,22 @@ export class HeaderComponent implements OnInit {
     this.dialogService.open(AuthUserComponent, { closeOnBackdropClick ,context: 'pass data in template' },);
   } 
 
+  onLogOut(){
+    this.authService.logOutService().subscribe()
+  }
+
   ngOnInit(): void {
+      // after that user signed up sugnup and sign in message must change to phone number
+      this.authService.userIsLoggedIn.subscribe(data=>{
+        if (data==true){
+            this.userPhoneNumber = localStorage.getItem('user_phone')
+        }
+      })
+  }
+
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes)
   }
 
 }

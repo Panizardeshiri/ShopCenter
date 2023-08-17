@@ -38,7 +38,7 @@ SECRET_KEY =env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 SMS_BACKEND = 'sms.backends.console.SmsBackend'
-ALLOWED_HOSTS=['127.0.0.1', '0.0.0.0']
+ALLOWED_HOSTS=['localhost','127.0.0.1', '0.0.0.0',]
 AUTH_USER_MODEL = 'accounts.User'
 
 # Application definition
@@ -117,8 +117,7 @@ REST_FRAMEWORK = {
 
 
 
-ALLOWED_HOSTS=['localhost:4200/',
-               '127.0.0.1']
+ALLOWED_HOSTS=['*']
 CORS_ORIGIN_ALLOW_ALL = True
 
 

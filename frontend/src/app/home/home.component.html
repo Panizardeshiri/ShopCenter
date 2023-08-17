@@ -1,1 +1,22 @@
-<p>home works!</p>
+<div class="container" >
+    <!-- <div class="alert alert-success col-md-offser-3 success" *ngIf="userIsLoggedIn && loginMessage ">
+        <p>{{loginMessage}}</p>
+    </div> -->
+
+    <!-- <div class="alert alert-success col-md-offser-3 success" *ngIf="!userIsLoggedIn && logoutMessage" >
+        <p>{{logoutMessage}}</p>
+    </div> -->
+    <div *ngIf="!loadingSpinner">
+        <div class="alert alert-success col-md-offser-3 success" *ngIf="userIsSignUp" >
+            <small >You have successfuly signed up, Email has sent to your email account please check it for activating your account. If not click <a (click)="onResendEmail()">here</a>  to resend verification email. </small>
+            <small  *ngIf="resendMessage">{{resendMessage}}</small>
+        </div>
+    </div>
+    <div *ngIf="loadingSpinner " class="spinner_loading">
+        <nb-card [nbSpinner]="true" >
+          <nb-card-body>
+            It may take a while, please wait...
+          </nb-card-body>
+        </nb-card>
+    </div>
+</div>
