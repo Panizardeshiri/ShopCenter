@@ -15,7 +15,7 @@ def register_user(phone,password,password2):
     
     return access, refresh
 
-register_user('+989017963838','pan12345','pan12345')
+# register_user('+989017963838','pan12345','pan12345')
    
 def login(phone, password):
     response = requests.post('http://127.0.0.1:8000/accounts/api-vi/login/',{'phone':phone,'password':password})
@@ -27,10 +27,10 @@ def login(phone, password):
     
     return refresh, access
 
-# refresh,access, = login('+989017963535','pan12345')
-# print(access)
-# print('---------------------------------------')
-# print(refresh)
+refresh,access, = login('+989012345667','paniz123456')
+print(access)
+print('---------------------------------------')
+print(refresh)
 
 
 def logout_user(refresh, access):
@@ -38,6 +38,8 @@ def logout_user(refresh, access):
         "Authorization": f"Bearer {access}"
     })
     print(response)
+
+# logout_user('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY5NDk1NTU1NSwiaWF0IjoxNjkyNTM2MzU1LCJqdGkiOiI1YWM3N2M3ZDhmMDA0Mjg3ODY0YTQxYzg0MzViMGQ2YSIsInVzZXJfaWQiOjM5fQ.RsoZw72fzFEr3LIDP7uUR7fU1fwU0GNN-LCRb0F-YbI','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjkzNzQ1OTU1LCJpYXQiOjE2OTI1MzYzNTUsImp0aSI6IjgyODg0YWY1NDhkMjQ1ODFiMjM0Y2M4YTgyYjY3NTRkIiwidXNlcl9pZCI6Mzl9.0NTCUaGTE-YkCHv9zPNFZ7u9bWlSMGm131I0R89uIlE')
 
 
 def t_view(access):

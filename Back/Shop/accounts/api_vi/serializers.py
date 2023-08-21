@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from ..models import User,Profile
+from ..models import *
 from django.conf import settings
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
@@ -117,11 +117,24 @@ class ForgetPassSerializer(serializers.ModelSerializer):
         model = User
         fields = ('phone',)
 
-class ChangePassSerializer(serializers.Serializer):
+class ResetPassSerializer(serializers.Serializer):
     phone = serializers.CharField(max_length=15, validators=[validate_international_phonenumber])
     pass_code = serializers.CharField(max_length=6)
+    new_pass = serializers.CharField(write_only=True, required=True, validators=[validate_password])
+    new_pass_confirm = serializers.CharField(write_only=True, required=True, validators=[validate_password])
+
+    
+    def validate(self, attrs):
+        if attrs['new_pass'] != attrs['new_pass_confirm']:
+            raise serializers.ValidationError({'password':'Password does not match'})
+        return attrs
+
+
+class ChangePassSerializer(serializers.Serializer):
+    phone = serializers.CharField(max_length=15, validators=[validate_international_phonenumber])
     old_pass = serializers.CharField(write_only=True, required=True, validators=[validate_password])
     new_pass = serializers.CharField(write_only=True, required=True, validators=[validate_password])
+    new_pass_confirm = serializers.CharField(write_only=True, required=True, validators=[validate_password])
 
 
 
@@ -129,3 +142,18 @@ class ChangePassSerializer(serializers.Serializer):
         if attrs['old_pass'] == attrs['new_pass']:
             raise serializers.ValidationError({'password': 'New Pass Must be Different from the Old Pass'})
         return attrs    
+    
+class ProfileSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Profile
+        fields = '__all__'
+
+
+class AddressSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Address
+        fields = '__all__'
+        
+

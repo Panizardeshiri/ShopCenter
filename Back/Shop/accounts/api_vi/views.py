@@ -38,10 +38,12 @@ class UserRegisterView(GenericAPIView):
         except: raise serializers.ValidationError({'phone':'phone alredy exist'})
         user = User.objects.get(phone=serializer.validated_data['phone'])
         refresh_token, access_token = get_tokens_for_user(user)
+        sms_code = user.sms_code
         return Response(
-            {'message':'User Successfully Registered',
+            {'message':'User Successfully Registered,You Will Receive a Verificatin Code',
              'refresh_token': refresh_token,
-             'access_token': access_token
+             'access_token': access_token,
+             'sms_code':sms_code
             },status= status.HTTP_201_CREATED)
 
 # Create your views here.
@@ -60,6 +62,10 @@ class Logout(APIView):
             
          
         tokens.delete()
+        user = User.objects.get(id=request.user.id)
+        print('^^^^^^^^^^^^^^',user)
+        user.is_logged_in = False
+        user.save()
         return Response({'detail':'logout seccuesfully'},status=status.HTTP_200_OK)   
 
 from rest_framework_simplejwt.views import (
@@ -150,7 +156,23 @@ class ForgetPassView(GenericAPIView):
         user.pass_code = pass_code
         user.save()
         send_sms_code(pass_code, user.phone)
-        return Response('Code sent')
+        return Response('A Code sent to your Phonnumber please Enter it to reset Your Password')
+    
+
+class ResetPassView(APIView):
+    serializer_class = ResetPassSerializer
+
+    def post(self,request):
+        serializer = self.serializer_class(data = request.data)
+        serializer.is_valid(raise_exception=True)
+        user = User.objects.get(phone = serializer.validated_data.get('phone'))
+        if user.pass_code == serializer.validated_data.get('pass_code'):
+            user.set_password(serializer.validated_data.get('new_pass'))
+            user.save()
+            return Response('Your Password Is Reseted Successfully')
+        
+        else:
+             return Response('Please Enter the Correct Code')
 
 class ChangePassView(GenericAPIView):
     serializer_class = ChangePassSerializer
@@ -159,14 +181,31 @@ class ChangePassView(GenericAPIView):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = User.objects.get(phone=serializer.validated_data.get('phone'))
-        if user.pass_code == serializer.validated_data.get('pass_code'):
-            user.set_password(serializer.validated_data.get('new_pass'))
-            user.save()
-            return Response('the pass changed successfully')
-        else:
-            return Response('please enter the correct code')
+        user.set_password(serializer.validated_data.get('new_pass'))
+        user.save()
+        return Response('Your Password Changed Successfully')
+        
+class ProfileView(APIView):
+    serializer_class = ProfileSerializer
 
+    def post(self,request):
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
 
+        return Response('Profile is created.')
+
+class AddressView(APIView):
+    serializer_class = AddressSerializer
+
+    def post(self,request):
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+
+        return Response('Address is added.')
+
+    
 
 
 class SmsView(APIView):
