@@ -10,6 +10,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   userPhoneNumber :any;
+  signUpMessage :string;
 
   constructor(private dialogService: NbDialogService,
           private authService: AuthService) { }
@@ -30,7 +31,10 @@ export class HeaderComponent implements OnInit {
   } 
 
   onLogOut(){
-    this.authService.logOutService().subscribe()
+    this.authService.logOutService().subscribe( data =>{
+      this.authService.userIsLoggedIn.next(false)
+      this.userPhoneNumber=''
+    })
   }
 
   ngOnInit(): void {
@@ -40,6 +44,15 @@ export class HeaderComponent implements OnInit {
             this.userPhoneNumber = localStorage.getItem('user_phone')
         }
       })
+
+      this.authService.userSignedUp.subscribe(data=>{
+        if (data==true){
+            this.userPhoneNumber = localStorage.getItem('user_phone')
+        }
+      })
+
+
+
   }
 
 

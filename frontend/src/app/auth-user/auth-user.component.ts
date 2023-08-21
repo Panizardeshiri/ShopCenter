@@ -11,6 +11,9 @@ import { NbDialogRef } from '@nebular/theme';
 })
 export class AuthUserComponent implements OnInit {
 
+  showPassword = false;
+  showPassword1 = false;
+
   constructor(private fb: FormBuilder,
             private authService: AuthService,
             protected dialogRef: NbDialogRef<any>, ) { }
@@ -47,7 +50,28 @@ export class AuthUserComponent implements OnInit {
   }
 
 
+  getInputType() {
+    if (this.showPassword) {
+      return 'text';
+    }
+    return 'password';
+  }
 
+  getInputType1() {
+    if (this.showPassword1) {
+      return 'text';
+    }
+    return 'password';
+  }
+
+  toggleShowPassword() {
+    this.showPassword = !this.showPassword;
+  }
+
+  toggleShowPassword1() {
+    this.showPassword1 = !this.showPassword1;
+  }
+  
   onSignUp(form:any){
     this.snippingLoading = true;
     const username = form.value.username
@@ -55,7 +79,9 @@ export class AuthUserComponent implements OnInit {
     const password1 = form.value.password1
 
     this.authService.signUpService(username, password, password1).subscribe( (data:any)=>{
-            this.dialogRef.close()
+            // this.dialogRef.close()
+            console.log('__________________________signup__________________', data)
+
     },errorMessage =>{
         this.requestMessage = errorMessage
         this.signUpForm.reset()
@@ -76,6 +102,7 @@ export class AuthUserComponent implements OnInit {
     const password = form.value.password
     this.snippingLoading = true
     this.authService.logInService(username, password).subscribe( (data)=>{
+      this.authService.userIsLoggedIn.next(true)
       this.snippingLoading = false
       this.dialogRef.close()
     }, errorMessage =>{

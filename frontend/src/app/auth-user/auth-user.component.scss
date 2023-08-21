@@ -57,6 +57,10 @@ form{
         margin-top: 2.5rem;
         text-align: center;
         font-style: italic;
+        p,a{
+            font-weight: 600;
+        }
+        
     }
     a, a:hover{
         cursor: pointer;
@@ -67,7 +71,55 @@ form{
         font-weight: 501;
         font-style: italic;
     }
+
 }
+
+
+
+::ng-deep .pass-input{
+    width: 100%;
+    nb-form-field{
+        max-width: none !important;
+        ::placeholder{
+            font-weight: bold !important;
+            color: #595c5f !important ;
+            font-size: 17px !important ;
+        }
+
+        input{
+            font-size: 17px;
+            padding-left: 10px !important;
+            max-width: none !important;
+            font-weight: 501 !important;
+            font-style: italic !important;
+            background: #fff !important;
+            border-radius: $input_border_radius !important;
+            height: 38px;
+
+
+        }
+        input:hover{
+            .invalid, .invalid:focus {
+                border-color: $input_wrong_border_color ;
+            }
+            .valid, .valid:focus{
+                border-color: $input_success_border_color;
+            }
+        }
+        button{
+            margin: 0 !important;
+            margin-bottom: 2px !important;
+            background: none !important;
+        }
+        button:focus{
+            box-shadow: none !important;
+        }
+
+    }
+}
+
+
+
 
 .error{
     background:$input_wrong_border_color ;

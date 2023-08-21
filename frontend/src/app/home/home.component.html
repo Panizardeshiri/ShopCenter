@@ -7,8 +7,13 @@
         <p>{{logoutMessage}}</p>
     </div> -->
     <div *ngIf="!loadingSpinner">
-        <div class="alert alert-success col-md-offser-3 success" *ngIf="userIsSignUp" >
+        <div class="alert alert-success col-md-offser-3 success" *ngIf="userSignedUp" >
             <small >You have successfuly signed up, Email has sent to your email account please check it for activating your account. If not click <a (click)="onResendEmail()">here</a>  to resend verification email. </small>
+            <small  *ngIf="resendMessage">{{resendMessage}}</small>
+        </div>
+
+        <div class="alert alert-success col-md-offser-3 success" *ngIf="loginMessage" >
+            <small >You have successfuly logged in. </small>
             <small  *ngIf="resendMessage">{{resendMessage}}</small>
         </div>
     </div>

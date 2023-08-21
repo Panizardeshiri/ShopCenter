@@ -1,9 +1,11 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthUserComponent } from './auth-user.component';
 import { FormsModule, ReactiveFormsModule, } from '@angular/forms';
-import { NbCardModule, NbSpinnerModule } from '@nebular/theme';
+import { NbCardModule, NbFormFieldModule, NbInputModule, NbSpinnerModule } from '@nebular/theme';
 import {MatIconModule} from '@angular/material/icon';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { NbIconModule } from '@nebular/theme';
 
 
 
@@ -16,10 +18,15 @@ import {MatIconModule} from '@angular/material/icon';
     FormsModule,
     ReactiveFormsModule,
     NbCardModule,
+
     
     // import nebular module here
     [
-      NbSpinnerModule
+      NbSpinnerModule,
+      NbInputModule,
+      NbEvaIconsModule,
+      NbIconModule,
+      NbFormFieldModule,
     ],
 
     // import material module here
@@ -29,6 +36,7 @@ import {MatIconModule} from '@angular/material/icon';
   ],
   exports: [
     AuthUserComponent
-  ]
+  ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AuthUserModule { }

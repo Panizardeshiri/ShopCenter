@@ -9,9 +9,10 @@ import { AuthService } from '../services/auth.service';
 export class HomeComponent implements OnInit {
 
   userIsLoggedIn :boolean;
-  userIsSignUp: boolean;
+  userSignedUp: boolean;
   loadingSpinner = false;
   resendMessage :string;
+  loginMessage:string
 
   constructor(private authService: AuthService) { }
 
@@ -20,8 +21,17 @@ export class HomeComponent implements OnInit {
     // after that user signed up the message will shown to user
     this.authService.userIsLoggedIn.subscribe( data =>{
       if (data == true){
-        this.userIsSignUp = true
+        this.userIsLoggedIn = true
+        this.loginMessage = 'logged in successfully'
+        setTimeout( ()=>{
+          this.loginMessage = ''
+        } , 3000)
+        
       }
+    })
+
+    this.authService.userSignedUp.subscribe(data => {
+      this.userSignedUp = data
     })
   }
 

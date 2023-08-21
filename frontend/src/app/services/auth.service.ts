@@ -13,6 +13,7 @@ export class AuthService {
   apiUrl              = environment.apiUrl
   requestResponseMessage =  new BehaviorSubject<string>('')
   userIsLoggedIn = new BehaviorSubject<boolean>(false)
+  userSignedUp = new BehaviorSubject<boolean>(false)
 
 
 
@@ -128,7 +129,7 @@ export class AuthService {
           localStorage.setItem('refresh_token', data['refresh_token'])
           localStorage.setItem('access_token', data['access_token'])
           localStorage.setItem('user_phone', username)
-          this.userIsLoggedIn.next(true)
+          this.userSignedUp.next(true)
           }
         )
       
