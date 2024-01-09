@@ -2,6 +2,7 @@
 
 This is a Dress Shop where everyone can buy dress there.
 The server side is implemented by django-rest-framework and the client is implemented by angular.
+The main project is in the dev branch.
 # Backend
 
 To use this part, first of all install all libraries in requirements.txt file: pip install -r requirements.txt.
